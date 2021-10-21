@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
+import { RootState } from './redux/reducers';
+
+const App: React.FC = () => {
+	const {
+		auth: { isAuth },
+	} = useSelector((state: RootState) => state);
+
+	console.log(isAuth);
+	return (
+		<Switch>
+			<Route path="/" exact>
+				<Home />
+			</Route>
+			<Route path="/profile">
+				{isAuth ? <Profile /> : <Redirect to="/" />}
+			</Route>
+		</Switch>
+	);
+};
 
 export default App;

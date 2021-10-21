@@ -1,0 +1,30 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  padding-top: 4rem;
+
+  color: var(--text-color);
+}
+
+h1 span {
+  color: var(--main-color);
+}
+
+.img-box {
+  max-width: 15rem;
+  height: auto;
+  border-bottom: 10px solid var(--text-color);
+  border-radius: 10px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
